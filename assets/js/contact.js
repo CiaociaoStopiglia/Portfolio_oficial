@@ -6,9 +6,8 @@ const socialItems = document.querySelectorAll('.social-item');
 let socialClicks = new Set();
 
 socialItems.forEach((item) => {
+    // REMOVIDO o e.preventDefault() para permitir navegação
     item.addEventListener('click', (e) => {
-        e.preventDefault();
-        
         const socialName = item.getAttribute('data-social');
         socialClicks.add(socialName);
         
@@ -18,15 +17,18 @@ socialItems.forEach((item) => {
         
         // Check if all socials were clicked
         if (socialClicks.size === socialItems.length) {
-            activateSocialMasterEasterEgg();
+            // Pequeno delay para mostrar o easter egg antes de navegar
+            setTimeout(() => {
+                activateSocialMasterEasterEgg();
+            }, 100);
             socialClicks.clear();
         }
     });
     
     // Random hover animation
     item.addEventListener('mouseenter', () => {
-        const randomRotate = (Math.random() - 0.5) * 10;
-        item.style.transform = `translateY(-10px) scale(1.05) rotate(${randomRotate}deg)`;
+        const randomRotate = (Math.random() - 0.5) * 5;
+        item.style.transform = `translateY(-5px) scale(1.02) rotate(${randomRotate}deg)`;
     });
     
     item.addEventListener('mouseleave', () => {
@@ -35,20 +37,6 @@ socialItems.forEach((item) => {
 });
 
 function activateSocialMasterEasterEgg() {
-    // Animate all social items in sequence
-    socialItems.forEach((item, index) => {
-        setTimeout(() => {
-            item.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
-            item.style.transform = 'scale(1.2) rotate(360deg)';
-            item.style.background = `linear-gradient(${index * 90}deg, #FF0000 0%, #0A0A0A 100%)`;
-            
-            setTimeout(() => {
-                item.style.transform = 'scale(1) rotate(0deg)';
-                item.style.background = '#E8E8E8';
-            }, 600);
-        }, index * 200);
-    });
-    
     showMessage('🌟 Social Media Master! All platforms unlocked!');
 }
 
@@ -76,7 +64,7 @@ function showMessage(text) {
         msg.style.opacity = '0';
         msg.style.transform = 'translate(-50%, -50%) scale(0.8)';
         setTimeout(() => msg.remove(), 500);
-    }, 3000);
+    }, 2000);
 }
 
 // Add pop in animation
@@ -195,7 +183,7 @@ infoValues.forEach((value) => {
 function showCopyMessage(element) {
     const msg = document.createElement('div');
     msg.textContent = '✓ Copied!';
-    msg.style.position = 'absolute';
+    msg.style.position = 'fixed';
     msg.style.background = '#0A0A0A';
     msg.style.color = 'white';
     msg.style.padding = '0.5rem 1rem';
@@ -227,13 +215,13 @@ function showCopyMessage(element) {
     }, 2000);
 }
 
-// Parallax effect
+// Parallax effect (suavizado)
 document.addEventListener('mousemove', (e) => {
     const mouseX = e.clientX / window.innerWidth;
     const mouseY = e.clientY / window.innerHeight;
     
     socialItems.forEach((item, index) => {
-        const speed = ((index % 2) + 1) * 8;
+        const speed = ((index % 2) + 1) * 3; // Reduzido para movimento mais sutil
         const x = (mouseX - 0.5) * speed;
         const y = (mouseY - 0.5) * speed;
         
