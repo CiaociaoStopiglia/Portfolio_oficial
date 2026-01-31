@@ -65,15 +65,17 @@ body {
 }
 
 .logo {
-    font-family: 'Archivo', sans-serif;
-    font-weight: 900;
-    font-size: 1.2rem;
-    line-height: 1.3;
-    letter-spacing: -0.02em;
     cursor: pointer;
     display: inline-block;
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     user-select: none;
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+    display: block;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .logo:hover {
