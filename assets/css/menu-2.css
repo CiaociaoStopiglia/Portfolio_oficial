@@ -71,7 +71,7 @@ body {
     transition: transform 0.3s ease;
 }
 
-.logo:hover {
+.logo:hover .logo-img {
     transform: scale(1.05) rotate(-2deg);
 }
 
@@ -166,9 +166,13 @@ body {
     margin-bottom: 5rem;
 }
 
+/* CARDS DOS PROJETOS - Otimizado para suas imagens */
 .project-card {
     aspect-ratio: 1;
-    background: var(--card-bg);
+    background-color: var(--card-bg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     border: 1px solid rgba(26, 26, 26, 0.1);
     position: relative;
     overflow: hidden;
@@ -226,6 +230,8 @@ body {
     font-size: 6rem;
     color: rgba(10, 10, 10, 0.1);
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    z-index: 2;
 }
 
 .project-card:hover .project-number {
@@ -245,6 +251,7 @@ body {
     justify-content: center;
     opacity: 0;
     transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 3;
 }
 
 .project-card:hover .project-overlay {
@@ -355,31 +362,32 @@ body {
     color: var(--accent-color);
 }
 
-/* Easter egg: Special card animation */
+/* Easter egg animation */
 .project-card.easter-active {
     animation: rainbowPulse 2s ease-in-out infinite;
 }
 
 @keyframes rainbowPulse {
     0%, 100% { 
-        background: #E8E8E8;
+        background-color: #E8E8E8;
         transform: scale(1);
     }
     25% { 
-        background: linear-gradient(135deg, #FF0000 0%, #E8E8E8 100%);
         transform: scale(1.02) rotate(1deg);
     }
     50% { 
-        background: linear-gradient(135deg, #0A0A0A 0%, #E8E8E8 100%);
         transform: scale(1.04) rotate(-1deg);
     }
     75% { 
-        background: linear-gradient(135deg, #FF0000 0%, #0A0A0A 50%, #E8E8E8 100%);
         transform: scale(1.02) rotate(1deg);
     }
 }
 
 @media (max-width: 768px) {
+    .logo-img {
+        height: 35px;
+    }
+
     .hero-title {
         font-size: 2rem;
     }

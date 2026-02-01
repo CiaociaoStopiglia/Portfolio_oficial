@@ -188,17 +188,15 @@ body {
     transform: translateY(-10px);
 }
 
+/* IMAGENS DOS TRABALHOS - Otimizado para 808x632 */
 .work-image {
-    aspect-ratio: 4/3;
-    background: var(--card-bg);
+    width: 100%;
+    aspect-ratio: 808 / 632;
+    background-color: var(--card-bg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     border: 1px solid rgba(26, 26, 26, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Archivo', sans-serif;
-    font-weight: 900;
-    font-size: 3rem;
-    color: rgba(10, 10, 10, 0.1);
     margin-bottom: 1.5rem;
     position: relative;
     overflow: hidden;
@@ -351,6 +349,10 @@ body {
 }
 
 @media (max-width: 768px) {
+    .logo-img {
+        height: 35px;
+    }
+
     .works-title {
         font-size: 2.5rem;
     }
